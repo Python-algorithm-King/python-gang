@@ -14,8 +14,11 @@ class Solution:
 #         return False
 # 구조체 어떻게 실행하는지도 모르겠네;;;;
 
-a = ListNode(1,2)
+a = ListNode(1)
+b = ListNode(2,a)
+c = ListNode(2,b)
+d = ListNode(1,c)
 
 s = Solution()
 # print(s.isPalindrome([1,2,2,1]))
-print(s.isPalindrome(a))
+print(s.isPalindrome(d))
