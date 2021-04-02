@@ -3,30 +3,24 @@ from typing import List
 
 class Solution:
     def findLatestStep(self, arr: List[int], m: int) -> int:
+        step = m
         list = [0]*len(arr)
-        step = 0
-        for item in arr:
-            step += 1
-            list[item-1]= 1
-            count = 0
-            safe = False
-            for i in list:
-                if i == 1:
-                    count += 1
-                    continue
-                if i == 0:
-                    if count == m:
-                        safe=True
-                    count = 0
-                    continue
-                if count == m:
-                    safe = True
-            if safe == False:
+        flag = []
+        for index in range(len(arr)):
+            list[arr[index]-1] = 1
+            if index < m:
+                continue
+            for item in list:
+                step += 1
+                count = m
+                if item == 1:
+                    count -= 1
+                if item == 0:
+                    if count == 0:
+                        flag.append(True)
+                        continue
+            if flag == False & index == len(arr):
                 return step
         return -1
-
-
-
-
 so = Solution()
-print(so.findLatestStep([3,1,5,4,2], 2))
+print(so.findLatestStep([3,5,1,2,4], 1))
